@@ -7,9 +7,9 @@ const culmm = S.length + 1;
 const row = T.length + 1;
 let dp: number[][] = [...Array(row)].map(() => Array(culmm).fill(0));
 dp[0].fill(1);
-let result: number;
+
 for (let i = 1; i < row; i++) {
-  for (let j = 1; j <= culmm; j++) {
+  for (let j = 1; j < culmm; j++) {
     if (S[j - 1] == T[i - 1]) {
       dp[i][j] = (dp[i][j - 1] + dp[i - 1][j - 1]) % (10 ** 9 + 7);
     } else {
@@ -17,5 +17,4 @@ for (let i = 1; i < row; i++) {
     }
   }
 }
-
-console.log(dp[8][S.length]);
+console.log(dp[row - 1][culmm - 1]);
