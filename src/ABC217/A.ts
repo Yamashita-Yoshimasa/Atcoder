@@ -14,4 +14,7 @@ reader.on('close', function () {
   Result(lines);
 });
 
-const Result = (input: string[]) => {};
+const Result = (input: string[]) => {
+  const Sort = input[0].split(' ').sort();
+  console.log(Sort[0] == input[0].split(' ')[0] ? 'Yes' : 'No');
+};

@@ -14,4 +14,22 @@ reader.on('close', function () {
   Result(lines);
 });
 
-const Result = (input: string[]) => {};
+const Result = (input: string[]) => {
+  const S = new Set(input);
+  if (S.has('ABC')) {
+    if (S.has('ARC')) {
+      if (S.has('AGC')) {
+        if (S.has('AHC')) {
+        } else {
+          console.log('AHC');
+        }
+      } else {
+        console.log('AGC');
+      }
+    } else {
+      console.log('ARC');
+    }
+  } else {
+    console.log('ABC');
+  }
+};

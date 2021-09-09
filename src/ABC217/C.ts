@@ -14,4 +14,22 @@ reader.on('close', function () {
   Result(lines);
 });
 
-const Result = (input: string[]) => {};
+const Result = (input: string[]) => {
+  const N = +input[0];
+  const P = input[1].split(' ').map((num) => Number(num));
+  let Q: number[] = Array(N);
+  let res = '';
+  for (let i = 1; i <= N; i++) {
+    Q[P[i - 1]] = i;
+  }
+
+  for (let i = 1; i <= N; i++) {
+    if (i == 1) {
+      res += Q[i];
+    } else {
+      res += ' ' + Q[i];
+    }
+  }
+
+  console.log(res);
+};
