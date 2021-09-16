@@ -25,9 +25,9 @@ const Result = (input: string[]) => {
 
   for (let i = 1; i <= N; i++) {
     if (i == 1) {
-      res += Q[i];
+      res += Q[P[i - 1]];
     } else {
-      res += ' ' + Q[i];
+      res += ' ' + Q[P[i - 1]];
     }
   }
 
