@@ -15,34 +15,11 @@ reader.on('close', function () {
 });
 
 const Result = (input: string[]) => {
-  const Alphabet = [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z',
-  ];
+  const c = 'a'.charCodeAt(0);
+  const Alphabet = Array.apply(null, new Array(26)).map((v, i) => {
+    return String.fromCharCode(c + i);
+  });
+
   const P = input[0].split(' ').map((num) => Number(num));
   let res: string = '';
 
