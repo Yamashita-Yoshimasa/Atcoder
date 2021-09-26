@@ -18,21 +18,25 @@ const Result = (input: string[]) => {
   const X = input[0].split('');
   const N = +input[1];
   const S = input.slice(2);
-  let numS = Array(N).fill(0);
+  let OldS = Array(N).fill('');
   let MapS = new Map();
+  const c = 'a'.charCodeAt(0);
+  const Alphabet = Array.apply(null, new Array(26)).map((v, i) => {
+    return String.fromCharCode(c + i);
+  });
 
   for (let i = 0; i < N; i++) {
     S[i].split('').map((s) => {
       for (let j = 0; j < 26; j++) {
         if (X[j] == s) {
-          numS[i] += j;
+          OldS[i] += Alphabet[j];
         }
       }
     });
-    MapS.set(numS[i], S[i]);
+    MapS.set(OldS[i], S[i]);
   }
-  numS.sort((a, b) => b - a);
+  OldS.sort();
   for (let i = 0; i < N; i++) {
-    console.log(MapS.get(numS[i]));
+    console.log(MapS.get(OldS[i]));
   }
 };
