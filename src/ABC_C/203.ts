@@ -17,27 +17,23 @@ reader.on('close', function () {
 const Result = (input: string[]) => {
   const N = BigInt(input[0].split(' ')[0]);
   const K = BigInt(input[0].split(' ')[1]);
-  let A:BigInt[] = Array(N);
+  let A: BigInt[] = Array(N);
   let B = new Map();
-  let wallet = K
+  let wallet = K;
 
-
-
-  for(let i = 0; i< N; i++){
-    A[i] = BigInt(input[i+1].split(' ')[0])
-    B.set(A[i],BigInt(input[i+1].split(' ')[1]))
-    }
-
-    A.sort();
-
-    for(let i = 0; i < N; i++){
-      if(wallet >= A[i] ) {
-        wallet += B.get(A[i]);
-      }else {
-        break;
-      }
-    }
-    console.log(String(wallet))
+  for (let i = 0; i < N; i++) {
+    A[i] = BigInt(input[i + 1].split(' ')[0]);
+    B.set(A[i], BigInt(input[i + 1].split(' ')[1]));
   }
 
+  A.sort();
 
+  for (let i = 0; i < N; i++) {
+    if (wallet >= A[i]) {
+      wallet += B.get(A[i]);
+    } else {
+      break;
+    }
+  }
+  console.log(String(wallet));
+};
