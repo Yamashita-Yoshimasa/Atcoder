@@ -15,25 +15,23 @@ reader.on('close', function () {
 });
 
 const Result = (input: string[]) => {
-  const N = BigInt(input[0].split(' ')[0]);
-  const K = BigInt(input[0].split(' ')[1]);
-  let A: BigInt[] = Array(N);
-  let B = new Map();
+  const N = Number(input[0].split(' ')[0]);
+  const K = Number(input[0].split(' ')[1]);
   let wallet = K;
+  let AB: Array<{ A: number; B: number }> = [];
 
   for (let i = 0; i < N; i++) {
-    A[i] = BigInt(input[i + 1].split(' ')[0]);
-    B.set(A[i], BigInt(input[i + 1].split(' ')[1]));
+    AB[i] = { A: 0, B: 0 };
+    [AB[i].A, AB[i].B] = input[i + 1].split(' ').map((x) => Number(x));
   }
-
-  A.sort();
+  AB.sort((a, b) => a.A - b.A);
 
   for (let i = 0; i < N; i++) {
-    if (wallet >= A[i]) {
-      wallet += B.get(A[i]);
+    if (wallet >= AB[i].A) {
+      wallet += AB[i].B;
     } else {
       break;
     }
   }
-  console.log(String(wallet));
+  console.log(wallet);
 };
